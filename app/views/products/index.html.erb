@@ -1,0 +1,31 @@
+<div style="margin: 20px 5px;">
+	<%= link_to "New product", new_product_path %>
+</div>
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Amount</th>
+			<th>Created At</th>
+			<th>Updated At</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @products.find_each do |product| %>
+			<tr>
+				<td><%= product.id %></td>
+				<td><%= product.title %></td>
+				<td><%= product.description %></td>
+				<td><%= product.price %></td>
+				<td><%= product.amount %></td>
+				<td><%= product.created_at.strftime("%m/%d/%Y %I:%M %p") %></td>
+				<td><%= product.updated_at.strftime("%m/%d/%Y %I:%M %p") %></td>
+				<td><%= link_to "Show", product_path(product.id) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

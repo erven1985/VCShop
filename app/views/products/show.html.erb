@@ -1,0 +1,8 @@
+<div>
+	<h1><%= @product.title %></h1>
+	<h4>Description: <%= @product.description %></h4>
+	<h4>Amount: <%= @product.amount %></h4>
+	<h4>Price: <%= number_to_currency(@product.price) %></h4>
+	<h4>Identifier: <%= @product.id %></h4>
+	<p><%= link_to "Back", products_path %></p>
+</div>
