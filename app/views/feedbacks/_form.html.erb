@@ -1,0 +1,46 @@
+<!-- Modal -->
+<%= form_for([@feedback.product, @feedback], remote: true) do |f| %>
+<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="feedbackModalLabel">Leave your feedback</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+          <% if @feedback.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+              <ul>
+              <% @feedback.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group" id="rating-form">
+            <label for="rating">Rating</label>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :comment %><br />
+            <%= f.text_area :comment, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.hidden_field :product_id %>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+        <%= f.submit "Save my feedback", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

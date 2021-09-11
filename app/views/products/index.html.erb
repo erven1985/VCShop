@@ -1,31 +1,44 @@
-<div style="margin: 20px 5px;">
-	<%= link_to "New product", new_product_path %>
+<div id="formReview"></div>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<div class="container">
+  <div class="row">
+      <% @products.each do |product| %>
+        <div class="p-2 col-md-3">
+          <div class="card">
+          <div class="card-body">
+            <div class="prod-img d-flex justify-content-center">
+              <img src="https://via.placeholder.com/250x250" alt="product_image">
+            </div>
+            <div class="prod-title">
+              <h5 class="font-weight-bold text-center my-3"><%= product.title %></h5>
+            </div>
+            <div class="prod-desc">
+              <%= product.description.truncate(100) %>
+            </div>
+            <div class="actions btn-group mt-3">
+              <%= link_to "Learn more", product, class: "btn btn-primary" %>
+              <%= link_to "Review", new_product_feedback_path(product_id: product.id), remote: true, class: "btn btn-danger" %>
+              <!-- /prodcuts/:id -->
+            </div>
+          </div>
+        </div>
+        </div>
+      <% end %>
+  </div>
 </div>
-<table>
-	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Price</th>
-			<th>Amount</th>
-			<th>Created At</th>
-			<th>Updated At</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @products.find_each do |product| %>
-			<tr>
-				<td><%= product.id %></td>
-				<td><%= product.title %></td>
-				<td><%= product.description %></td>
-				<td><%= product.price %></td>
-				<td><%= product.amount %></td>
-				<td><%= product.created_at.strftime("%m/%d/%Y %I:%M %p") %></td>
-				<td><%= product.updated_at.strftime("%m/%d/%Y %I:%M %p") %></td>
-				<td><%= link_to "Show", product_path(product.id) %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+
+<br>
+
+<div class="form-group" id="rating-form">
+  <label for="rating">Rating</label>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>

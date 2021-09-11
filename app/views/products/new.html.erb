@@ -1,34 +1,5 @@
 <h1>New Product</h1>
-<div>
-<%= form_for Product.new do |f| %>
-	<div>
-		<%= f.label "Title" %>
-		<%= f.text_field :title %>
-	</div>
-	<div>
-		<%= f.label "Description" %>
-		<%= f.text_field :description %>
-	</div>
-	<div>
-		<%= f.label "Price" %>
-		<%= f.number_field :price %>
-	</div>
-	<div>
-		<%= f.label "Amount" %>
-		<%= f.number_field :amount %>
-	</div>
-		<%= f.submit "Submit" %>
-<% end %>
-</div>
 
+<%= render 'form', product: @product %>
 
-<p><%= link_to "Back", products_path %></p>
-
-<style>
-	div {
-		margin: 20px 10px;
-	}
-	label {
-		font-weight: 600;
-	}
-</style>
+<%= link_to 'Back', products_path %>
